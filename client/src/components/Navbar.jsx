@@ -24,7 +24,7 @@ import FlexBetBox from "components/styled/FlexBetweenBox";
 // import profileImage from "assets/profile.jpg";
 import { setMode } from "state/globalSlice";
 
-const Navbar = () => {
+const Navbar = ({ isSidebarOpen, setIsSidebarOpen }) => {
   const dispatch = useDispatch();
   const theme = useTheme();
 
@@ -39,7 +39,7 @@ const Navbar = () => {
       <Toolbar sx={{ justifyContent: "space-between" }}>
         {/* left */}
         <FlexBetBox>
-          <IconButton onClick={() => {}}>
+          <IconButton onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
             <MenuIcon />
           </IconButton>
           <FlexBetBox
