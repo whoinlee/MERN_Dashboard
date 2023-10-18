@@ -5,6 +5,7 @@ import { createTheme } from "@mui/material/styles";
 import { useSelector } from "react-redux";
 import { themeSettings } from "theme";
 import Dashboard from "components/pages/Dashboard";
+import Layout from "components/pages/Layout";
 
 
 function App() {
@@ -17,8 +18,7 @@ function App() {
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <Routes>
-            {/* <Route element={<Layout/>}> */}
-            <Route>
+            <Route element={<Layout/>}>
               <Route path="/" element={<Navigate to="/dashboard" replace />} />
               <Route path="/dashboard" element={<Dashboard />} />
             </Route>
