@@ -10,6 +10,7 @@ const Layout = () => {
   const isNonMobile = useMediaQuery("(min-width: 600px)");
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const userId = useSelector((state) => state.global.userId);
+  console.log("🚀 ~ file: Layout.jsx:13 ~ Layout ~ userId:", userId)
   const { data } = useGetUserQuery(userId);
   console.log("🚀 ~ file: Dashboard.jsx:15 ~ Dashboard ~ data:", data)  //--ctrl option L
 

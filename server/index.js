@@ -32,10 +32,14 @@ app.use("/management", managementRoutes);
 app.use("/sales", salesRoutes);
 
 
-import User from "./models/User.js";
+// import User from "./models/User.js";
 import {
-  dataUser,
-} from "./data/index.js";
+  // dataUser,
+  // dataProduct,
+  // dataProductStat,
+} from "./data/index.js";  //mock data to be inserted into DB
+// import Product from "./models/Product.js";
+// import ProductStat from "./models/ProductStat.js";
 //--------------------//
 //-- MONGOOSE set up -//
 //--------------------//
@@ -49,11 +53,15 @@ mongoose
     app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
 
     /* ONLY ADD DATA ONE TIME */
-    // User.insertMany(dataUser);
+    // User.insertMany(dataUser); //-- done
+    //
+    // Product.insertMany(dataProduct);
+    // ProductStat.insertMany(dataProductStat); //-- done
+    //
     // AffiliateStat.insertMany(dataAffiliateStat);
     // OverallStat.insertMany(dataOverallStat);
-    // Product.insertMany(dataProduct);
-    // ProductStat.insertMany(dataProductStat);
+    //
+
     // Transaction.insertMany(dataTransaction);
   })
   .catch((error) => console.log(`${error} :: did not connect to ${process.env.MONGO_URL}`));
