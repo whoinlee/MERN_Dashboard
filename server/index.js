@@ -5,7 +5,6 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import helmet from 'helmet';
 import morgan from 'morgan';
-
 //--------------------//
 //-- configurations --//
 //--------------------//
@@ -33,7 +32,10 @@ app.use("/management", managementRoutes);
 app.use("/sales", salesRoutes);
 
 
-
+import User from "./models/User.js";
+import {
+  dataUser,
+} from "./data/index.js";
 //--------------------//
 //-- MONGOOSE set up -//
 //--------------------//
@@ -47,11 +49,12 @@ mongoose
     app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
 
     /* ONLY ADD DATA ONE TIME */
+    // User.insertMany(dataUser);
     // AffiliateStat.insertMany(dataAffiliateStat);
     // OverallStat.insertMany(dataOverallStat);
     // Product.insertMany(dataProduct);
     // ProductStat.insertMany(dataProductStat);
     // Transaction.insertMany(dataTransaction);
-    // User.insertMany(dataUser);
   })
   .catch((error) => console.log(`${error} :: did not connect to ${process.env.MONGO_URL}`));
+
