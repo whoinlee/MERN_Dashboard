@@ -24,7 +24,7 @@ import FlexBetBox from "components/styled/FlexBetweenBox";
 // import profileImage from "assets/profile.jpg";
 import { setMode } from "state/globalSlice";
 
-const Navbar = ({ isSidebarOpen, setIsSidebarOpen }) => {
+const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
   const dispatch = useDispatch();
   const theme = useTheme();
 

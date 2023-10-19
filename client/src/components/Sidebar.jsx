@@ -92,7 +92,7 @@ const NAV_ITEMS = [
 ];
 
 const Sidebar = ({
-  // user,
+  user,
   drawerWidth,
   isSidebarOpen,
   setIsSidebarOpen,
