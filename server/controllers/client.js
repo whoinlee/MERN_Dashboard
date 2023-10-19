@@ -1,16 +1,29 @@
-import express from "express";
-// import {
-//   getProducts,
-//   getCustomers,
-//   getTransactions,
-//   getGeography,
-// } from "../controllers/client.js";
+import Product from "../models/Product.js";
+import ProductStat from "../models/ProductStat.js";
+import User from "../models/User.js";
+// import Transaction from "../models/Transaction.js";
+// import getCountryIso3 from "country-iso-2-to-3";
 
-const router = express.Router();
+export const getProducts = async (req, res) => {
+    try {
+        const products = await Product.find();
 
-// router.get("/products", getProducts);
-// router.get("/customers", getCustomers);
-// router.get("/transactions", getTransactions);
-// router.get("/geography", getGeography);
+        const productsWithStats = await Promise.all(
+            products.map(async (product) => {
+              const stat = await ProductStat.find({
+                productId: product._id,
+              });
+              return {
+                ...product._doc,    //-- from mongoDB return data structure
+                stat,
+              };
+            })
+        );
+        res.status(200).json(productsWithStats);
+    } catch (error) {
+        res.status(404).json({ message: error.message });
+    }
+}
 
-export default router;
+export const getCustomers = async (req, res) => {
+}
