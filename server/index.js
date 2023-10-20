@@ -37,9 +37,11 @@ import {
   // dataUser,
   // dataProduct,
   // dataProductStat,
+  // dataTransaction,
 } from "./data/index.js";  //mock data to be inserted into DB
 // import Product from "./models/Product.js";
 // import ProductStat from "./models/ProductStat.js";
+// import Transaction from "./models/Transaction.js";
 //--------------------//
 //-- MONGOOSE set up -//
 //--------------------//
@@ -58,11 +60,10 @@ mongoose
     // Product.insertMany(dataProduct);
     // ProductStat.insertMany(dataProductStat); //-- done
     //
+    // Transaction.insertMany(dataTransaction); //-- done
+    //
     // AffiliateStat.insertMany(dataAffiliateStat);
     // OverallStat.insertMany(dataOverallStat);
-    //
-
-    // Transaction.insertMany(dataTransaction);
   })
   .catch((error) => console.log(`${error} :: did not connect to ${process.env.MONGO_URL}`));
 
