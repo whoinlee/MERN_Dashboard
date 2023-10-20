@@ -42,6 +42,7 @@ const Transactions = () => {
   // values to be sent to the backend
   const [page, setPage] = useState(0);
   const [pageSize, setPageSize] = useState(20);
+  const [paginationModel, setPaginationModel] = useState({page:0, pageSize: 20})
   const [sort, setSort] = useState({});
   const [search, setSearch] = useState("");
 
@@ -49,6 +50,8 @@ const Transactions = () => {
   const { data, isLoading } = useGetTransactionsQuery({
     page,
     pageSize,
+    // paginationModel.page
+    // paginationModel.pageSize,
     sort: JSON.stringify(sort),
     search,
   });
@@ -90,17 +93,20 @@ const Transactions = () => {
           rows={(data && data.transactions) || []}
           columns={COLUMNS}
           rowCount={(data && data.total) || 0}
-          rowsPerPageOptions={[20, 50, 100]}
-          pagination
-          page={page}
-          pageSize={pageSize}
+          // rowsPerPageOptions={[20, 50, 100]}
+          pageSizeOptions={[20, 50, 100]} //-- updated
+          // pagination
+          // page={page}
+          // pageSize={pageSize}
+          paginationModel={paginationModel}
           paginationMode="server"
           sortingMode="server"
-          onPageChange={(newPage) => setPage(newPage)}
-          onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
-          onSortModelChange={(newSortModel) => setSort(...newSortModel)}
-          slots={{ toolbar: DataGridCustomToolbar }}
-          slotsProps={{
+          onPaginationModelChange={setPaginationModel}
+          onPageChange={(newPage) => {console.log("onPageChange");setPage(newPage)}}
+          onPageSizeChange={(newPageSize) => {console.log("onPageSizeChange");setPageSize(newPageSize)}}
+          onSortModelChange={(newSortModel) => {console.log("onSortModelChange");setSort(...newSortModel)}}
+          slots={{ toolbar: DataGridCustomToolbar }}  //-- components -> slots
+          slotsProps={{                               //-- componentsProps -> slotsProps
             toolbar: { searchInput, setSearchInput, setSearch },
           }}
         />
